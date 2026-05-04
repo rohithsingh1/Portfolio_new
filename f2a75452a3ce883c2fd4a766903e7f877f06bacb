@@ -1,0 +1,23 @@
+index.html
+  ba6e1eb0bc145985 1654-1655,1754-1756,1773-1777,1779-1783,1791
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.7",
+  "base_commit_sha": "f2a75452a3ce883c2fd4a766903e7f877f06bacb",
+  "prompts": {
+    "ba6e1eb0bc145985": {
+      "agent_id": {
+        "tool": "DeputyDev",
+        "id": "419299",
+        "model": "AUTO"
+      },
+      "human_author": "unknown",
+      "messages": [],
+      "total_additions": 71,
+      "total_deletions": 26,
+      "accepted_lines": 25,
+      "overriden_lines": 20
+    }
+  }
+}
