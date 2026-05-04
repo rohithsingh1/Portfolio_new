@@ -22,8 +22,8 @@
         --pink: #ec4899;
         --cyan: #22d3ee;
         --amber: #f59e0b;
-        --white: #f1f5f9;
-        --muted: #64748b;
+        --white: #f8fafc;
+        --muted: #cbd5f5;
         --border: rgba(99, 102, 241, 0.18);
         --glass: rgba(13, 17, 32, 0.72);
         --radius: 16px;
@@ -360,7 +360,7 @@
         padding: 6px 16px;
         font-size: 12px;
         font-weight: 500;
-        color: var(--indigo-l);
+        color: var(--white);
         margin-bottom: 28px;
         letter-spacing: .5px;
         animation: fade-up .6s ease both;
@@ -481,12 +481,16 @@
       }
 
       .float-card {
-        background: linear-gradient(135deg, rgba(99, 102, 241, .12), rgba(236, 72, 153, .08));
+        background: linear-gradient(135deg,
+            rgba(99, 102, 241, 0.18),
+            rgba(236, 72, 153, 0.12));
         border: 1px solid var(--border);
         border-radius: 24px;
         padding: 32px;
         backdrop-filter: blur(12px);
-        box-shadow: 0 24px 80px rgba(0, 0, 0, .5), inset 0 1px 0 rgba(255, 255, 255, .08);
+        box-shadow:
+          0 24px 80px rgba(0, 0, 0, .6),
+          0 0 60px rgba(99, 102, 241, .15);
         transform-style: preserve-3d;
         transition: transform .1s ease-out;
         position: relative;
@@ -502,6 +506,62 @@
         height: 200%;
         background: radial-gradient(circle at 60% 30%, rgba(99, 102, 241, .15) 0%, transparent 60%);
         pointer-events: none;
+      }
+
+      .hero-highlights {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px 20px;
+        font-size: 13px;
+        color: #94a3b8;
+      }
+
+      .hero-highlights div {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .card-mini {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+      }
+
+      .card-mini span {
+        font-size: 12px;
+        padding: 4px 10px;
+        border-radius: 6px;
+        color: #e0e7ff;
+        background: rgba(99, 102, 241, 0.15);
+        border: 1px solid rgba(99, 102, 241, 0.35);
+      }
+
+      .card-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 20px;
+      }
+
+      .card-tech span {
+        font-size: 11px;
+        padding: 4px 8px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #e2e8f0;
+      }
+
+      .card-focus {
+        margin-top: 16px;
+        font-size: 12px;
+        color: #e2e8f0;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
       }
 
       .card-avatar {
@@ -528,7 +588,7 @@
       }
 
       .card-role {
-        font-size: 13px;
+        font-size: 14px;
         color: var(--muted);
         margin-bottom: 24px;
       }
@@ -548,18 +608,19 @@
 
       .stat-num {
         font-family: var(--font-h);
-        font-weight: 800;
+        font-weight: 900;
         font-size: 26px;
         background: linear-gradient(135deg, var(--indigo-l), var(--cyan));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
         display: block;
+        color: #ffffff;
       }
 
       .stat-lbl {
         font-size: 11px;
-        color: var(--muted);
+        color: #cbd5f5;
         margin-top: 2px;
       }
 
@@ -807,7 +868,7 @@
 
       .tl-list li {
         font-size: 14px;
-        color: #94a3b8;
+        color: var(--muted);
         padding: 5px 0 5px 20px;
         position: relative;
         border-bottom: 1px solid rgba(255, 255, 255, .04);
@@ -879,6 +940,33 @@
         display: block;
       }
 
+      .proj-icon {
+        width: 42px;
+        height: 42px;
+        margin-bottom: 16px;
+      }
+
+      .proj-icon svg {
+        width: 100%;
+        height: 100%;
+
+        /* 🔥 KEY FIXES */
+        /* fill: #e2e8f0; */
+        /* near white */
+        stroke: none;
+        fill: #f8fafc;
+        filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.3));
+
+        opacity: 0.9;
+        transition: all 0.3s ease;
+      }
+
+      /* Hover effect (optional but nice) */
+      .proj-card:hover .proj-icon svg {
+        fill: var(--cyan);
+        transform: scale(1.1);
+      }
+
       .proj-title {
         font-family: var(--font-h);
         font-weight: 700;
@@ -888,9 +976,19 @@
 
       .proj-desc {
         font-size: 13.5px;
-        color: #94a3b8;
+        color: var(--muted);
         margin-bottom: 20px;
         line-height: 1.6;
+      }
+
+      .proj-desc ul {
+        list-style: disc;
+        padding-left: 20px;
+        margin: 0;
+      }
+
+      .proj-desc li {
+        margin-bottom: 8px;
       }
 
       .proj-tags {
@@ -954,12 +1052,25 @@
         height: 44px;
         border-radius: 10px;
         flex-shrink: 0;
-        background: linear-gradient(135deg, rgba(245, 158, 11, .2), rgba(245, 158, 11, .05));
-        border: 1px solid rgba(245, 158, 11, .25);
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 20px;
+      }
+
+      .edu-icon svg {
+        width: 100%;
+        height: 100%;
+
+        /* 🔥 KEY FIXES */
+        /* fill: #e2e8f0; */
+        /* near white */
+        stroke: none;
+        fill: #f8fafc;
+        filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.3));
+
+        opacity: 0.9;
+        transition: all 0.3s ease;
       }
 
       .edu-deg {
@@ -1023,12 +1134,27 @@
         height: 48px;
         border-radius: 12px;
         flex-shrink: 0;
-        background: linear-gradient(135deg, rgba(34, 211, 238, .2), rgba(34, 211, 238, .05));
-        border: 1px solid rgba(34, 211, 238, .25);
+        /* background: linear-gradient(135deg, rgba(34, 211, 238, .2), rgba(34, 211, 238, .05));
+        border: 1px solid rgba(34, 211, 238, .25); */
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 22px;
+      }
+
+      .contact-icon svg {
+        width: 100%;
+        height: 100%;
+
+        /* 🔥 KEY FIXES */
+        /* fill: #e2e8f0; */
+        /* near white */
+        stroke: none;
+        fill: #f8fafc;
+        filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.3));
+
+        opacity: 0.9;
+        transition: all 0.3s ease;
       }
 
       .contact-text {
@@ -1264,8 +1390,19 @@
             </span>
           </h1>
           <p class="hero-sub">
-            Full Stack Engineer building <span>production-grade</span> web apps with
-            React, Node.js, and cloud-native architectures. Currently at <span>Tata 1MG</span>.
+            Full Stack Engineer with <span>3+ years experience</span> building scalable,
+            high-performance web applications at <span>Tata 1MG</span>.
+
+            <br><br>
+
+            Specialized in <span>React, Node.js, and system design</span>, with a strong focus on
+            performance optimization, accessibility, and production reliability.
+
+            <br><br>
+
+            • Reduced search latency by <span>40%</span> using ElasticSearch
+            • Built <span>45+ analytics APIs</span> for large-scale user tracking
+            • Standardized <span>20+ UI components</span> improving consistency and maintainability
           </p>
           <div class="hero-ctas">
             <a href="#projects" class="btn-primary">View Projects</a>
@@ -1281,31 +1418,53 @@
         <div class="hero-right">
           <div class="float-card" id="floatCard">
             <div class="card-avatar">TR</div>
+
             <div class="card-name">Thakur Rohith</div>
             <div class="card-role">Full Stack Engineer · Hyderabad, IN</div>
+
+            <!-- 🔥 Experience -->
+            <div class="card-mini">
+              <span>3+ Years Experience</span>
+              <span>Production Systems</span>
+            </div>
+
+            <!-- 🔥 Tech Stack -->
+            <div class="card-tech">
+              <span>React</span>
+              <span>Node.js</span>
+              <span>TypeScript</span>
+              <span>MongoDB</span>
+              <span>PostgreSQL</span>
+              <span>ElasticSearch</span>
+            </div>
+
+            <!-- 🔥 Stats -->
             <div class="card-stats">
-              <!-- <div class="stat-box">
-                <span class="stat-num">45+</span>
-                <div class="stat-lbl">Analytics APIs shipped</div>
-              </div> -->
               <div class="stat-box">
                 <span class="stat-num">95%</span>
-                <div class="stat-lbl">Test coverage achieved</div>
+                <div class="stat-lbl">Test coverage</div>
               </div>
               <div class="stat-box">
                 <span class="stat-num">40%</span>
-                <div class="stat-lbl">Search latency reduced</div>
+                <div class="stat-lbl">Latency reduced</div>
+              </div>
+              <div class="stat-box">
+                <span class="stat-num">45+</span>
+                <div class="stat-lbl">APIs shipped</div>
               </div>
               <div class="stat-box">
                 <span class="stat-num">20+</span>
-                <div class="stat-lbl">UI components standardised</div>
+                <div class="stat-lbl">UI components</div>
               </div>
             </div>
+
+
             <div class="card-badge">Open to new roles</div>
           </div>
         </div>
       </div>
     </section>
+
 
     <div class="divider"></div>
 
@@ -1452,6 +1611,11 @@
                 <li>Integrated Elastic Search with backend APIs to deliver centralised search
                   functionality, reducing search latency by 40% and improving data retrieval
                   accuracy.</li>
+                <li>Designed and implemented scalable backend systems using Node.js, PostgreSQL, and
+                  MySQL.</li>
+                <li>Built REST APIs supporting complex data workflows and optimized database queries
+                  for
+                  performance.</li>
               </ul>
             </div>
           </div>
@@ -1461,7 +1625,6 @@
     </section>
 
     <div class="divider"></div>
-
     <!-- ═══ PROJECTS ══════════════════════════════════ -->
     <section id="projects" class="section-pad">
       <div class="container">
@@ -1472,11 +1635,26 @@
           <div class="proj-card"
             onclick="window.open('https://github.com/rohithsingh1/BusTicketBookingApplication','_blank')"
             style="cursor:pointer;">
-            <span class="proj-emoji">🚌</span>
+            <div class="proj-icon">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                <path
+                  d="M480 64C568.4 64 640 135.6 640 224L640 448C640 483.3 611.3 512 576 512L570.4 512C557.2 549.3 521.8 576 480 576C438.2 576 402.7 549.3 389.6 512L250.5 512C237.3 549.3 201.8 576 160.1 576C118.4 576 82.9 549.3 69.7 512L64 512C28.7 512 0 483.3 0 448L0 160C0 107 43 64 96 64L480 64zM160 432C133.5 432 112 453.5 112 480C112 506.5 133.5 528 160 528C186.5 528 208 506.5 208 480C208 453.5 186.5 432 160 432zM480 432C453.5 432 432 453.5 432 480C432 506.5 453.5 528 480 528C506.5 528 528 506.5 528 480C528 453.5 506.5 432 480 432zM480 128C462.3 128 448 142.3 448 160L448 352C448 369.7 462.3 384 480 384L544 384C561.7 384 576 369.7 576 352L576 224C576 171 533 128 480 128zM248 288L352 288C369.7 288 384 273.7 384 256L384 160C384 142.3 369.7 128 352 128L248 128L248 288zM96 128C78.3 128 64 142.3 64 160L64 256C64 273.7 78.3 288 96 288L200 288L200 128L96 128z" />
+              </svg>
+            </div>
             <div class="proj-title">Bus Ticket Booking Platform</div>
-            <p class="proj-desc">Full-stack platform for authenticated users to select seats, choose
-              destinations, complete secure payments, and download e-tickets. Achieved 95% Jest test
-              coverage.</p>
+            <ul class="proj-desc">
+              <li>Designed and built a full-stack booking platform supporting authentication, seat
+                selection, and
+                payments.</li>
+
+              <li>Implemented secure payment workflows and e-ticket generation system.</li>
+
+              <li>Achieved <strong>95% test coverage</strong> ensuring reliability and
+                maintainability.</li>
+
+              <li>Optimized API performance and frontend rendering for better user experience.</li>
+            </ul>
             <div class="proj-tags">
               <span class="proj-tag">Next.JS</span>
               <span class="proj-tag">Node.js</span>
@@ -1490,11 +1668,23 @@
           <div class="proj-card"
             onclick="window.open('https://github.com/rohithsingh1/MERN_Music_Player','_blank')"
             style="cursor:pointer;">
-            <span class="proj-emoji">🎵</span>
+            <div class="proj-icon">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                <path
+                  d="M532 71C539.6 77.1 544 86.3 544 96L544 400C544 444.2 501 480 448 480C395 480 352 444.2 352 400C352 355.8 395 320 448 320C459.2 320 470 321.6 480 324.6L480 207.9L256 257.7L256 464C256 508.2 213 544 160 544C107 544 64 508.2 64 464C64 419.8 107 384 160 384C171.2 384 182 385.6 192 388.6L192 160C192 145 202.4 132 217.1 128.8L505.1 64.8C514.6 62.7 524.5 65 532.1 71.1z" />
+              </svg>
+            </div>
             <div class="proj-title">Music Player Application</div>
-            <p class="proj-desc">Full-stack music streaming platform with user authentication,
-              playback controls, playlist management, indexed search with debounce autocomplete, and
-              dynamic shuffling.</p>
+            <ul class="proj-desc">
+              <li>Developed a scalable music streaming application with real-time playback and
+                playlist
+                management.</li>
+
+              <li>Implemented debounced search and indexing for faster content discovery.</li>
+
+              <li>Designed state management using Redux for predictable UI behavior.</li>
+            </ul>
             <div class="proj-tags">
               <span class="proj-tag">React</span>
               <span class="proj-tag">Redux</span>
@@ -1508,11 +1698,22 @@
           <div class="proj-card"
             onclick="window.open('https://github.com/rohithsingh1/MovieTicketBookingApplication','_blank')"
             style="cursor:pointer;">
-            <span class="proj-emoji">🎬</span>
+            <div class="proj-icon">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                <path
+                  d="M512 128C514 128 515.9 128.1 517.8 128.3L422.1 224L490 224L562 152C570.8 163 576 176.9 576 192L576 448C576 483.3 547.3 512 512 512L128 512C92.7 512 64 483.3 64 448L64 192C64 156.7 92.7 128 128 128L198.1 128L102.1 224L170 224L265 129L266 128L358.1 128L262.1 224L330 224L425 129L426 128L512.1 128z" />
+              </svg>
+            </div>
             <div class="proj-title">Movie Ticket Booking App</div>
-            <p class="proj-desc">Full-stack movie booking system with show discovery, seat
-              selection, Stripe payments, ticket generation, and an admin panel to manage theatres,
-              screens, and shows.</p>
+            <ul class="proj-desc">
+              <li>Built full-stack movie ticketing system with seat selection and payment
+                integration.</li>
+
+              <li>Developed admin dashboard for managing shows, screens, and theatres.</li>
+
+              <li>Integrated Stripe for secure and reliable payment processing.</li>
+            </ul>
             <div class="proj-tags">
               <span class="proj-tag">Next.JS</span>
               <span class="proj-tag">MongoDB</span>
@@ -1520,6 +1721,87 @@
               <span class="proj-tag">Express.js</span>
               <span class="proj-tag">Redux</span>
               <span class="proj-tag">Stripe</span>
+            </div>
+          </div>
+
+          <div class="proj-card"
+            onclick="window.open('https://github.com/rohithsingh1/QuizApplication-React-Native','_blank')"
+            style="cursor:pointer;">
+            <div class="proj-icon">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                <path
+                  d="M184 120C184 89.1 209.1 64 240 64L264 64C281.7 64 296 78.3 296 96L296 544C296 561.7 281.7 576 264 576L232 576C202.2 576 177.1 555.6 170 528C169.3 528 168.7 528 168 528C123.8 528 88 492.2 88 448C88 430 94 413.4 104 400C84.6 385.4 72 362.2 72 336C72 305.1 89.6 278.2 115.2 264.9C108.1 252.9 104 238.9 104 224C104 179.8 139.8 144 184 144L184 120zM456 120L456 144C500.2 144 536 179.8 536 224C536 239 531.9 253 524.8 264.9C550.5 278.2 568 305 568 336C568 362.2 555.4 385.4 536 400C546 413.4 552 430 552 448C552 492.2 516.2 528 472 528C471.3 528 470.7 528 470 528C462.9 555.6 437.8 576 408 576L376 576C358.3 576 344 561.7 344 544L344 96C344 78.3 358.3 64 376 64L400 64C430.9 64 456 89.1 456 120z" />
+              </svg>
+            </div>
+            <div class="proj-title">Quiz Application</div>
+            <ul class="proj-desc">
+              <li>Built mobile-first quiz platform using React Native with real-time scoring and
+                leaderboard.</li>
+
+              <li>Designed backend APIs with JWT authentication and MongoDB.</li>
+
+              <li>Implemented timer-based logic and scalable question management system.</li>
+            </ul>
+            <div class="proj-tags">
+              <span class="proj-tag">React Native</span>
+              <span class="proj-tag">Expo</span>
+              <span class="proj-tag">Node.js</span>
+              <span class="proj-tag">Express.js</span>
+              <span class="proj-tag">MongoDB</span>
+              <span class="proj-tag">JWT</span>
+            </div>
+          </div>
+
+          <div class="proj-card"
+            onclick="window.open('https://github.com/rohithsingh1/KBC-Game-React','_blank')"
+            style="cursor:pointer;">
+            <div class="proj-icon">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                <path
+                  d="M420.9 448C428.2 425.7 442.8 405.5 459.3 388.1C492 353.7 512 307.2 512 256C512 150 426 64 320 64C214 64 128 150 128 256C128 307.2 148 353.7 180.7 388.1C197.2 405.5 211.9 425.7 219.1 448L420.8 448zM416 496L224 496L224 512C224 556.2 259.8 592 304 592L336 592C380.2 592 416 556.2 416 512L416 496zM312 176C272.2 176 240 208.2 240 248C240 261.3 229.3 272 216 272C202.7 272 192 261.3 192 248C192 181.7 245.7 128 312 128C325.3 128 336 138.7 336 152C336 165.3 325.3 176 312 176z" />
+              </svg>
+            </div>
+            <div class="proj-title">KBC Quiz Application</div>
+            <ul class="proj-desc">
+              <li>KBC (Kaun Banega Crorepati) themed quiz game</li>
+              <li>Adaptation of "Who Wants to Be a Millionaire"</li>
+              <li>~15 progressive questions with increasing cash prizes</li>
+              <li>Time limit for each question</li>
+              <li>Theme music plays based on answer correctness</li>
+              <li>Game progression on correct answers</li>
+              <li>Game ends on incorrect answer or timeout</li>
+            </ul>
+            <div class="proj-tags">
+              <span class="proj-tag">React</span>
+            </div>
+          </div>
+
+          <div class="proj-card"
+            onclick="window.open('https://github.com/rohithsingh1/Speed-Typer-Game','_blank')"
+            style="cursor:pointer;">
+            <div class="proj-icon">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                <path
+                  d="M96 128C60.7 128 32 156.7 32 192L32 448C32 483.3 60.7 512 96 512L544 512C579.3 512 608 483.3 608 448L608 192C608 156.7 579.3 128 544 128L96 128zM112 192L144 192C152.8 192 160 199.2 160 208L160 240C160 248.8 152.8 256 144 256L112 256C103.2 256 96 248.8 96 240L96 208C96 199.2 103.2 192 112 192zM96 304C96 295.2 103.2 288 112 288L144 288C152.8 288 160 295.2 160 304L160 336C160 344.8 152.8 352 144 352L112 352C103.2 352 96 344.8 96 336L96 304zM208 192L240 192C248.8 192 256 199.2 256 208L256 240C256 248.8 248.8 256 240 256L208 256C199.2 256 192 248.8 192 240L192 208C192 199.2 199.2 192 208 192zM192 304C192 295.2 199.2 288 208 288L240 288C248.8 288 256 295.2 256 304L256 336C256 344.8 248.8 352 240 352L208 352C199.2 352 192 344.8 192 336L192 304zM208 384L432 384C440.8 384 448 391.2 448 400L448 432C448 440.8 440.8 448 432 448L208 448C199.2 448 192 440.8 192 432L192 400C192 391.2 199.2 384 208 384zM288 208C288 199.2 295.2 192 304 192L336 192C344.8 192 352 199.2 352 208L352 240C352 248.8 344.8 256 336 256L304 256C295.2 256 288 248.8 288 240L288 208zM304 288L336 288C344.8 288 352 295.2 352 304L352 336C352 344.8 344.8 352 336 352L304 352C295.2 352 288 344.8 288 336L288 304C288 295.2 295.2 288 304 288zM384 208C384 199.2 391.2 192 400 192L432 192C440.8 192 448 199.2 448 208L448 240C448 248.8 440.8 256 432 256L400 256C391.2 256 384 248.8 384 240L384 208zM400 288L432 288C440.8 288 448 295.2 448 304L448 336C448 344.8 440.8 352 432 352L400 352C391.2 352 384 344.8 384 336L384 304C384 295.2 391.2 288 400 288zM480 208C480 199.2 487.2 192 496 192L528 192C536.8 192 544 199.2 544 208L544 240C544 248.8 536.8 256 528 256L496 256C487.2 256 480 248.8 480 240L480 208zM496 288L528 288C536.8 288 544 295.2 544 304L544 336C544 344.8 536.8 352 528 352L496 352C487.2 352 480 344.8 480 336L480 304C480 295.2 487.2 288 496 288z" />
+              </svg>
+            </div>
+            <div class="proj-title">Speed Typer Application</div>
+            <ul class="proj-desc">
+              <li>The aim of the game is to enter as many words as shown on the screen
+                quickly.
+              </li>
+              <li>For every correctly typed word, a single point is given and the user
+                score increases.</li>
+              <li>There is a limited time given to enter the word and a fixed
+                time is added for every new word that appears.</li>
+              <li>We have 3 levels of difficulty: easy, medium, and hard.</li>
+              <li>The game ends when the timer runs out.</li>
+            </ul>
+            <div class="proj-tags">
+              <span class="proj-tag">React</span>
             </div>
           </div>
 
@@ -1536,11 +1818,17 @@
         <h2 class="section-title"><span class="grad">Education</span></h2>
         <div class="edu-grid">
           <div class="edu-card">
-            <div class="edu-icon">🎓</div>
+            <div class="edu-icon">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                <path
+                  d="M80 259.8L289.2 345.9C299 349.9 309.4 352 320 352C330.6 352 341 349.9 350.8 345.9L593.2 246.1C602.2 242.4 608 233.7 608 224C608 214.3 602.2 205.6 593.2 201.9L350.8 102.1C341 98.1 330.6 96 320 96C309.4 96 299 98.1 289.2 102.1L46.8 201.9C37.8 205.6 32 214.3 32 224L32 520C32 533.3 42.7 544 56 544C69.3 544 80 533.3 80 520L80 259.8zM128 331.5L128 448C128 501 214 544 320 544C426 544 512 501 512 448L512 331.4L369.1 390.3C353.5 396.7 336.9 400 320 400C303.1 400 286.5 396.7 270.9 390.3L128 331.4z" />
+              </svg>
+            </div>
             <div>
-              <div class="edu-deg">BE / B.Tech / BS</div>
+              <div class="edu-deg">B.Tech in Computer Science</div>
               <div class="edu-school">Anurag University, Hyderabad</div>
-              <div class="edu-year">2021</div>
+              <div class="edu-year">2017 - 2021</div>
             </div>
           </div>
         </div>
@@ -1553,41 +1841,71 @@
     <section id="contact" class="section-pad">
       <div class="container">
         <span class="section-label">Say Hello</span>
-        <h2 class="section-title"><span class="grad">Get In</span> Touch</h2>
+        <h2 class="section-title"><span class="grad">Let's Build</span> Something Great</h2>
         <div class="ripple-wrap">
           <div class="ripple-avatar">TR</div>
         </div>
         <div class="contact-grid">
           <a class="contact-card" href="mailto:rohithsinghthakur3@gmail.com">
-            <div class="contact-icon">✉️</div>
+            <div class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                <path
+                  d="M112 128C85.5 128 64 149.5 64 176C64 191.1 71.1 205.3 83.2 214.4L291.2 370.4C308.3 383.2 331.7 383.2 348.8 370.4L556.8 214.4C568.9 205.3 576 191.1 576 176C576 149.5 554.5 128 528 128L112 128zM64 260L64 448C64 483.3 92.7 512 128 512L512 512C547.3 512 576 483.3 576 448L576 260L377.6 408.8C343.5 434.4 296.5 434.4 262.4 408.8L64 260z" />
+              </svg>
+            </div>
             <div class="contact-text">
               <div class="contact-lbl">Email</div>
               <span class="contact-val">rohithsinghthakur3@gmail.com</span>
             </div>
           </a>
           <a class="contact-card" href="tel:+917981866770">
-            <div class="contact-icon">📞</div>
+            <div class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                <path
+                  d="M376 32C504.1 32 608 135.9 608 264C608 277.3 597.3 288 584 288C570.7 288 560 277.3 560 264C560 162.4 477.6 80 376 80C362.7 80 352 69.3 352 56C352 42.7 362.7 32 376 32zM384 224C401.7 224 416 238.3 416 256C416 273.7 401.7 288 384 288C366.3 288 352 273.7 352 256C352 238.3 366.3 224 384 224zM352 152C352 138.7 362.7 128 376 128C451.1 128 512 188.9 512 264C512 277.3 501.3 288 488 288C474.7 288 464 277.3 464 264C464 215.4 424.6 176 376 176C362.7 176 352 165.3 352 152zM176.1 65.4C195.8 60 216.4 70.1 224.2 88.9L264.7 186.2C271.6 202.7 266.8 221.8 252.9 233.2L208.8 269.3C241.3 340.9 297.8 399.3 368.1 434.2L406.7 387C418 373.1 437.1 368.4 453.7 375.2L551 415.8C569.8 423.6 579.9 444.2 574.5 463.9L573 469.4C555.4 534.1 492.9 589.3 416.6 573.2C241.6 536.1 103.9 398.4 66.8 223.4C50.7 147.1 105.9 84.6 170.5 66.9L176 65.4z" />
+              </svg>
+            </div>
             <div class="contact-text">
               <div class="contact-lbl">Phone</div>
               <span class="contact-val">+91 79818 66770</span>
             </div>
           </a>
           <a class="contact-card" href="https://linkedin.com" target="_blank">
-            <div class="contact-icon">💼</div>
+            <div class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                <path
+                  d="M264 112L376 112C380.4 112 384 115.6 384 120L384 160L256 160L256 120C256 115.6 259.6 112 264 112zM208 120L208 160L128 160C92.7 160 64 188.7 64 224L64 320L576 320L576 224C576 188.7 547.3 160 512 160L432 160L432 120C432 89.1 406.9 64 376 64L264 64C233.1 64 208 89.1 208 120zM576 368L384 368L384 384C384 401.7 369.7 416 352 416L288 416C270.3 416 256 401.7 256 384L256 368L64 368L64 480C64 515.3 92.7 544 128 544L512 544C547.3 544 576 515.3 576 480L576 368z" />
+              </svg>
+            </div>
             <div class="contact-text">
               <div class="contact-lbl">LinkedIn</div>
               <span class="contact-val">linkedin.com/in/rohith</span>
             </div>
           </a>
           <a class="contact-card" href="https://github.com" target="_blank">
-            <div class="contact-icon">🐙</div>
+            <div class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                <path
+                  d="M237.9 461.4C237.9 463.4 235.6 465 232.7 465C229.4 465.3 227.1 463.7 227.1 461.4C227.1 459.4 229.4 457.8 232.3 457.8C235.3 457.5 237.9 459.1 237.9 461.4zM206.8 456.9C206.1 458.9 208.1 461.2 211.1 461.8C213.7 462.8 216.7 461.8 217.3 459.8C217.9 457.8 216 455.5 213 454.6C210.4 453.9 207.5 454.9 206.8 456.9zM251 455.2C248.1 455.9 246.1 457.8 246.4 460.1C246.7 462.1 249.3 463.4 252.3 462.7C255.2 462 257.2 460.1 256.9 458.1C256.6 456.2 253.9 454.9 251 455.2zM316.8 72C178.1 72 72 177.3 72 316C72 426.9 141.8 521.8 241.5 555.2C254.3 557.5 258.8 549.6 258.8 543.1C258.8 536.9 258.5 502.7 258.5 481.7C258.5 481.7 188.5 496.7 173.8 451.9C173.8 451.9 162.4 422.8 146 415.3C146 415.3 123.1 399.6 147.6 399.9C147.6 399.9 172.5 401.9 186.2 425.7C208.1 464.3 244.8 453.2 259.1 446.6C261.4 430.6 267.9 419.5 275.1 412.9C219.2 406.7 162.8 398.6 162.8 302.4C162.8 274.9 170.4 261.1 186.4 243.5C183.8 237 175.3 210.2 189 175.6C209.9 169.1 258 202.6 258 202.6C278 197 299.5 194.1 320.8 194.1C342.1 194.1 363.6 197 383.6 202.6C383.6 202.6 431.7 169 452.6 175.6C466.3 210.3 457.8 237 455.2 243.5C471.2 261.2 481 275 481 302.4C481 398.9 422.1 406.6 366.2 412.9C375.4 420.8 383.2 435.8 383.2 459.3C383.2 493 382.9 534.7 382.9 542.9C382.9 549.4 387.5 557.3 400.2 555C500.2 521.8 568 426.9 568 316C568 177.3 455.5 72 316.8 72zM169.2 416.9C167.9 417.9 168.2 420.2 169.9 422.1C171.5 423.7 173.8 424.4 175.1 423.1C176.4 422.1 176.1 419.8 174.4 417.9C172.8 416.3 170.5 415.6 169.2 416.9zM158.4 408.8C157.7 410.1 158.7 411.7 160.7 412.7C162.3 413.7 164.3 413.4 165 412C165.7 410.7 164.7 409.1 162.7 408.1C160.7 407.5 159.1 407.8 158.4 408.8zM190.8 444.4C189.2 445.7 189.8 448.7 192.1 450.6C194.4 452.9 197.3 453.2 198.6 451.6C199.9 450.3 199.3 447.3 197.3 445.4C195.1 443.1 192.1 442.8 190.8 444.4zM179.4 429.7C177.8 430.7 177.8 433.3 179.4 435.6C181 437.9 183.7 438.9 185 437.9C186.6 436.6 186.6 434 185 431.7C183.6 429.4 181 428.4 179.4 429.7z" />
+              </svg>
+            </div>
             <div class="contact-text">
               <div class="contact-lbl">GitHub</div>
               <span class="contact-val">github.com/rohith</span>
             </div>
           </a>
           <a class="contact-card" href="#">
-            <div class="contact-icon">📍</div>
+            <div class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                <path
+                  d="M128 252.6C128 148.4 214 64 320 64C426 64 512 148.4 512 252.6C512 371.9 391.8 514.9 341.6 569.4C329.8 582.2 310.1 582.2 298.3 569.4C248.1 514.9 127.9 371.9 127.9 252.6zM320 320C355.3 320 384 291.3 384 256C384 220.7 355.3 192 320 192C284.7 192 256 220.7 256 256C256 291.3 284.7 320 320 320z" />
+              </svg>
+            </div>
             <div class="contact-text">
               <div class="contact-lbl">Location</div>
               <span class="contact-val">Hyderabad, Telangana</span>
